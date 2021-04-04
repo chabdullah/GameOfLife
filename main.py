@@ -16,7 +16,7 @@ class Gol(QMainWindow):
         self.setCentralWidget(self.grid)
         x, y = (self.grid.x_length, self.grid.y_length)
         self.setFixedSize(x * 15, y * 15)
-
+        # Create toolbar and add buttons
         self.toolbar = self.addToolBar('menu')
         self.playButton = QPushButton("Play", self)
         self.pauseButton = QPushButton("Pause", self)
@@ -24,7 +24,7 @@ class Gol(QMainWindow):
         self.playButton.clicked.connect(self.playGame)
         self.pauseButton.clicked.connect(self.pauseGame)
         self.clearButton.clicked.connect(self.clearGame)
-
+        # View component (Slider) that controls the speed of the game
         self.initialSpeed = 500
         self.slider = QSlider(Qt.Horizontal)
         self.maximumSlider = 1000
@@ -41,6 +41,7 @@ class Gol(QMainWindow):
 
         self.show()
 
+    # The controller will interact with the Model (Grid class) with these methods
     def playGame(self):
         self.grid.startGame()
 
