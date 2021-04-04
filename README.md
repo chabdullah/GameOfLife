@@ -1,4 +1,11 @@
 # GameOfLife
+# Overview
+![GitHub last commit](https://img.shields.io/github/last-commit/chabdullah/gameOfLife)
+- **Academic year:** 2020-2021
+- **Project title:** Game of Life
+- **Student:** [Abdullah Chaudhry](https://github.com/chabdullah)
+- **CFUs:** 9
+
 ## About Game of Life
 The game of life is a cellular automaton imagined by John H. Conway in the 1970s and is probably, the best known of all cellular automata. Despite very simple rules, the game of life is Turing-complete and deterministic.
 The game of life is a game in the mathematical sense rather than a playable game. It is “zero player game”.
@@ -29,5 +36,11 @@ The game can be launched from the `main.py` script:
 ```
 $ python3 main.py
 ```
+## Requirements
+| Software       | Version        |
+| -------------- |:--------------:|
+| **Python**     |     >= 3.5     |
+| **PyQt5**      |     >= 5.1     |
+
 # Acknowledgments
 Human Computer Interaction project - Computer Engineering Master Degree @[University of Florence](https://www.unifi.it/changelang-eng.html)
