@@ -31,16 +31,15 @@ The user can play, pause and reset the game using the buttons at the top of the 
 The animation of the Game of Life simulation keep track of how long each cell has been alive. Each cell remembers for how long it has been
 occupied and changes accordingly the color from light blue (newborn) to bright red (ancient).
 
+## Requirements
+**PyQt5**
+```console
+$ pip install PyQt5
+```
 ## Running the game
 The game can be launched from the `main.py` script:
 ```
 $ python3 main.py
 ```
-## Requirements
-| Software       | Version        |
-| -------------- |:--------------:|
-| **Python**     |     >= 3.5     |
-| **PyQt5**      |     >= 5.1     |
-
 # Acknowledgments
 Human Computer Interaction project - Computer Engineering Master Degree @[University of Florence](https://www.unifi.it/changelang-eng.html)
