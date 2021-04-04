@@ -12,6 +12,7 @@ The game of life is a game in the mathematical sense rather than a playable game
 * [Original article](http://ddi.cs.uni-potsdam.de/HyFISCH/Produzieren/lis_projekt/proj_gamelife/ConwayScientificAmerican.htm)
 * [Online community](https://www.conwaylife.com/)
 
+<img src="https://github.com/chabdullah/GameOfLife/blob/master/img/gameOfLifeDemo.gif">
 
 ## Rules
 The game takes place on a two-dimensional finite or infinite grid whose cells can take two distinct states: “alive” or “dead”.
@@ -41,5 +42,6 @@ The game can be launched from the `main.py` script:
 ```
 $ python3 main.py
 ```
+
 # Acknowledgments
 Human Computer Interaction project - Computer Engineering Master Degree @[University of Florence](https://www.unifi.it/changelang-eng.html)
