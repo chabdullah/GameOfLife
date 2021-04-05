@@ -1,22 +1,23 @@
 import sys
 
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QSlider
+from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QSlider, QLabel, QComboBox, QToolBar
 
 from grid import Grid
 
 
 class Gol(QMainWindow):
-
     def __init__(self):
         super().__init__()
         # Create main window
         self.setWindowTitle('Game of Life')
-        self.grid = Grid()
+        self.size = 30
+        self.grid = Grid(self.size, self.size)
         self.setCentralWidget(self.grid)
-        x, y = (self.grid.x_length, self.grid.y_length)
-        self.setFixedSize(x * 15, y * 15)
+        self.setFixedSize(self.size * 15, self.size * 15)
         # Create toolbar and add buttons
+        self.speedLabel = QLabel()
+        self.speedLabel.setText("Speed")
         self.toolbar = self.addToolBar('menu')
         self.playButton = QPushButton("Play", self)
         self.pauseButton = QPushButton("Pause", self)
@@ -26,18 +27,19 @@ class Gol(QMainWindow):
         self.clearButton.clicked.connect(self.clearGame)
         # View component (Slider) that controls the speed of the game
         self.initialSpeed = 500
-        self.slider = QSlider(Qt.Horizontal)
-        self.maximumSlider = 1000
-        self.slider.setMinimum(10)
-        self.slider.setMaximum(self.maximumSlider)
-        self.slider.setValue(self.initialSpeed)
+        self.sliderSpeed = QSlider(Qt.Horizontal)
+        self.maximumSpeedSlider = 1000
+        self.sliderSpeed.setMinimum(10)
+        self.sliderSpeed.setMaximum(self.maximumSpeedSlider)
+        self.sliderSpeed.setValue(self.initialSpeed)
         self.grid.speed = self.initialSpeed
-        self.slider.valueChanged.connect(self.sliderValueChange)
-
+        self.sliderSpeed.valueChanged.connect(self.sliderSpeedValueChange)
+        # Add widgets to the toolbar
         self.toolbar.addWidget(self.playButton)
         self.toolbar.addWidget(self.pauseButton)
         self.toolbar.addWidget(self.clearButton)
-        self.toolbar.addWidget(self.slider)
+        self.toolbar.addWidget(self.speedLabel)
+        self.toolbar.addWidget(self.sliderSpeed)
 
         self.show()
 
@@ -51,8 +53,8 @@ class Gol(QMainWindow):
     def clearGame(self):
         self.grid.clearGame()
 
-    def sliderValueChange(self):
-        self.grid.speed = (self.maximumSlider + 10) - self.slider.value()
+    def sliderSpeedValueChange(self):
+        self.grid.speed = (self.maximumSpeedSlider + 10) - self.sliderSpeed.value()
         if self.grid.on:
             self.playGame()
 

@@ -51,14 +51,14 @@ class Cell(QWidget):
 
 
 class Grid(QWidget):
-    def __init__(self):
+    def __init__(self, x, y):
         super().__init__()
         self.grid = QGridLayout()
         self.grid.setSpacing(0)
         self.setLayout(self.grid)
 
-        self.x_length = 30
-        self.y_length = 30
+        self.x_length = x
+        self.y_length = y
         # Initialize all the cells in the grid
         for x in range(self.x_length):
             for y in range(self.y_length):
