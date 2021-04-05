@@ -1,4 +1,4 @@
-# GameOfLife
+# Game Of Life
 ![GitHub last commit](https://img.shields.io/github/last-commit/chabdullah/gameOfLife)
 - **Academic year:** 2020-2021
 - **Project title:** Game of Life
