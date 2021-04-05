@@ -6,6 +6,10 @@ from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QSlider, QLa
 from grid import Grid
 
 
+def setColor(widget, color):
+    widget.setStyleSheet('QWidget {color: ' + color + '; padding: 10 ;}')
+
+
 class Gol(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -24,6 +28,7 @@ class Gol(QMainWindow):
         self.clearButton = QPushButton("Clear", self)
         self.playButton.clicked.connect(self.playGame)
         self.pauseButton.clicked.connect(self.pauseGame)
+        self.pauseButton.setDisabled(True)
         self.clearButton.clicked.connect(self.clearGame)
         # View component (Slider) that controls the speed of the game
         self.initialSpeed = 500
@@ -41,17 +46,31 @@ class Gol(QMainWindow):
         self.toolbar.addWidget(self.speedLabel)
         self.toolbar.addWidget(self.sliderSpeed)
 
+        setColor(self.playButton, 'green')
+        setColor(self.pauseButton, 'grey')
+        setColor(self.clearButton, 'red')
         self.show()
 
     # The controller will interact with the Model (Grid class) with these methods
     def playGame(self):
         self.grid.startGame()
+        setColor(self.playButton, 'grey')
+        setColor(self.pauseButton, 'blue')
+        self.playButton.setText('Simulating...')
+        self.pauseButton.setDisabled(False)
 
     def pauseGame(self):
         self.grid.pauseGame()
+        setColor(self.playButton, 'green')
+        setColor(self.pauseButton, 'grey')
+        self.playButton.setText('Resume')
 
     def clearGame(self):
         self.grid.clearGame()
+        setColor(self.playButton, 'green')
+        setColor(self.pauseButton, 'grey')
+        self.playButton.setText('Play')
+        self.pauseButton.setDisabled(True)
 
     def sliderSpeedValueChange(self):
         self.grid.speed = (self.maximumSpeedSlider + 10) - self.sliderSpeed.value()
